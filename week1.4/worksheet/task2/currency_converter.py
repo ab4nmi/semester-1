@@ -8,6 +8,7 @@
 
     Name: Ahmed Abdulmajeed Abanmi
 """
+
 def currency_converter(amount, from_currency, to_currency):
 
     conversion_rate = {
@@ -26,7 +27,6 @@ def currency_converter(amount, from_currency, to_currency):
     rate = conversion_rate[from_currency][to_currency]
     ans = amount * rate
     return round(ans, 2)
-
 
 # Submit only this file currency_converter.py with the completed function.
 
