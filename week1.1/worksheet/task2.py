@@ -6,7 +6,14 @@ Name:
 
 name = input("What is your name? ")
 print(f"Welcome to LeedsBank's savings calculator {name}!")
-
+try:
+    money = int(input("How much money do you wanna save every month? "))
+    if money <= 0:
+        print("Please enter a positive integer for the amount you want to save.")
+    else:
+        # your savings and interest lines stay here
+except ValueError:
+    print("Please enter a valid whole number.")
 # Ask the user to input an amount they want to save every month - this should be an integer.
 # Validate that they have entered an integer.
 
