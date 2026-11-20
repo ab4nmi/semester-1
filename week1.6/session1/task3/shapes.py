@@ -6,36 +6,29 @@ from point import Point
 VALID_COLOURS = {"red", "orange", "yellow", "green", "blue", "purple"}
 
 
-class Shape:
-    """
-    Superclass for different types of shape.
-    """
+class Circle(Shape):
+    """circle class"""
+    def __init__(self, radius, position, colour="red"):
+        super().__init__(position, colour)
+        self.set_radius(radius)
 
-    def __init__(self, position, colour):
-        """
-        Creates a shape with the specified position & colour.
-        """
-        self.set_position(position)
-        self.set_colour(colour)
+    def set_radius(self, radius):
+        """sets the radius"""
+        # check if its a num
+        if not isinstance(radius, (int, float)):
+            raise TypeError("radius must be a number")
+        # cant be 0 or negative
+        if radius <= 0:
+            raise ValueError("radius must be bigger than 0")
+        self.radius = radius
 
-    def set_position(self, position):
-        """
-        Moves this shape to the given position.
-        """
-        if not isinstance(position, Point):
-            raise TypeError("position must be a Point")
+    def __str__(self):
+        return f"{self.colour} circle, radius {self.radius}, at {self.position}"
 
-        self.position = position
+    def area(self):
+        # pi r squared
+        return math.pi * self.radius * self.radius
 
-    def set_colour(self, colour):
-        """
-        Sets this shape's colour to the given colour.
-        """
-        if colour not in VALID_COLOURS:
-            raise ValueError(f"invalid color: must be one of {VALID_COLOURS}")
-
-        self.colour = colour
-
-
-# Implement your Circle class here
-# Make sure that it inherits properly from Shape!
+    def perimeter(self):
+        # 2 pi r
+        return 2 * math.pi * self.radius
