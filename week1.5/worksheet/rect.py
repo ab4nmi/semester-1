@@ -1,17 +1,35 @@
-# Worksheet 1.5: Rectangle Class
+# Worksheet 1.5: Rectangle class
 
 class Rectangle:
-    """
-    A rectangle, with a width and a height.
-    """
+    """rectangle class"""
     def __init__(self, width, height):
-        """
-        Creates a Rectangle, given values for width and height.
-        """
-        # Add code here to check type and value of provided width & height,
-        # raising appropriate exceptions if necessary (see README.md)
-        self.width = width
-        self.height = height
+        """sets up width and height"""
+        # check types
+        if type(width) != int:
+            raise TypeError("width not int")
+        if type(height) != int:
+            raise TypeError("height not int")
+        # check values
+        if width <= 0:
+            raise ValueError("width too small")
+        if height <= 0:
+            raise ValueError("height too small")
+        self.width=width
+        self.height=height
 
-    # Implement methods is_square(), area() & perimeter() here
-    # (See README.md for details of what they should do)
+    def is_square(self):
+        """checks if square"""
+        if self.width == self.height:
+            return True
+        else:
+            return False
+
+    def area(self):
+        """calculates area"""
+        a = self.width * self.height
+        return a
+
+    def perimeter(self):
+        """calculates perimiter"""
+        p = self.width + self.width + self.height + self.height
+        return p
